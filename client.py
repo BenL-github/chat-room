@@ -1,5 +1,6 @@
 from socket import *
 import selectors
+import sys
 
 # set server name and port number 
 server_name = 'localhost'
@@ -46,8 +47,14 @@ with socket(AF_INET, SOCK_STREAM) as client_socket:
                     if user_input == "/q":
                         break
 
+                    user_input + "\n"
+
                      # send msg
                     client_socket.send(user_input.encode())
+            else: 
+                continue
+            # break out of loop if user input "/q"
+            break
 
     except:
         print("Error")

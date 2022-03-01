@@ -35,7 +35,7 @@ def handle_client(conn_socket, addr):
             break
         else:
             print(f"{name}: " + msg)
-            broadcast(conn_socket, f"{name}: " + msg)
+            broadcast(conn_socket, f"{name}: " + msg + "\n")
 
         
 def broadcast(conn_socket, msg):
