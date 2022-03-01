@@ -6,7 +6,7 @@ HOST = '127.0.0.1'
 MAX_CLIENTS = 5
 CHAT_NAME = "Benny's chatroom"
 clients = list()
-pool = concurrent.futures.ThreadPoolExecutor()
+
 
 def handle_client(conn_socket, addr):
     # ask for client name 
@@ -54,14 +54,11 @@ def main():
         server_socket.bind((HOST, PORT))
         server_socket.listen()
         print(f"Server listening on {HOST} at port {PORT}")
-        while True:
-            conn_socket, addr = server_socket.accept()
+        with concurrent.futures.ThreadPoolExecutor() as pool:
+            while True:
+                conn_socket, addr = server_socket.accept()
 
-            pool.submit(handle_client, conn_socket, addr)
-                
-
-
-            
+                pool.submit(handle_client, conn_socket, addr)
 
 if __name__ == "__main__":
     main()
