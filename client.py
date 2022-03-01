@@ -1,11 +1,13 @@
 from socket import *
 import selectors
+import concurrent.futures
 
 # set server name and port number 
 server_name = 'localhost'
 server_port = 3000
 
 sel = selectors.DefaultSelector()
+pool = concurrent.futures.ThreadPoolExecutor()
 
 # create a socket
 with socket(AF_INET, SOCK_STREAM) as client_socket:
@@ -50,7 +52,7 @@ with socket(AF_INET, SOCK_STREAM) as client_socket:
                     client_socket.send(user_input.encode())
 
     except:
-        print("Error")
+        print("Disconnected from chatroom")
     finally: 
         sel.close()
 

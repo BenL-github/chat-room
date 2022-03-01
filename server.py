@@ -32,6 +32,7 @@ def handle_client(conn_socket, addr):
             print(f"Client at {addr} disconnected")
             conn_socket.close()
             clients.remove(conn_socket)
+            print(f"Total clients: {len(clients)}")
             break
         else:
             print(f"{name}: " + msg)
@@ -46,6 +47,7 @@ def broadcast(conn_socket, msg):
             except: 
                 client.close()
                 remove(client)
+                print(f"Total clients: {len(clients)}")
 
 def main():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
