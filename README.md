@@ -2,7 +2,7 @@
 
 "chat-room" is a chat room server that allows for multiple clients.
 
-Clients use the command line interface to send messages to other clients in the chat room. The server uses multithreading to provide service to multiple clients. 
+Clients use the command line interface to send messages to other clients in the chat room. The server uses multithreading to provide service to multiple clients. Connections are made over Transmission Control Protocol (TCP). 
 
 ## Installation (Cloning this Repository)
 
